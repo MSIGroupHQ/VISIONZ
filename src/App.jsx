@@ -45,10 +45,10 @@ function Header() {
   }, [])
   return <header className="site-header">
     <nav className="nav-shell" aria-label="Primary">
-      <div className="nav-side nav-left desktop"><Link to="/lookbook">LOOKBOOK</Link><Link to="/about">ABOUT</Link></div>
       <Link to="/" className="nav-logo" aria-label="VISIONZ home"><Logo /></Link>
-      <div className="nav-side nav-right desktop"><Link to="/shop">SHOP</Link><Link to="/product/see-beyond-shorts-noir" className="nav-action">SEE BEYOND SHORTS</Link></div>
-      <button className="menu-button" type="button" aria-expanded={open} onClick={() => setOpen(v => !v)}>{open ? 'CLOSE' : 'MENU'}</button>
+      <div className="nav-links desktop"><Link to="/shop">SHOP</Link><Link to="/lookbook">LOOKBOOK</Link><Link to="/about">ABOUT</Link></div>
+      <Link to="/shop" className="nav-shop desktop">SHOP ↗</Link>
+      <button className="menu-button" type="button" aria-expanded={open} aria-label="Toggle navigation" onClick={() => setOpen(v => !v)}>{open ? 'CLOSE' : 'MENU'}</button>
     </nav>
     <div className={`mobile-menu ${open ? 'open' : ''}`}>
       <Link to="/shop">SHOP</Link><Link to="/lookbook">LOOKBOOK</Link><Link to="/about">ABOUT</Link><Link to="/shipping">SHIPPING</Link><Link to="/returns">RETURNS</Link>
@@ -58,64 +58,63 @@ function Header() {
 
 function Footer() {
   return <footer className="site-footer">
-    <Logo className="footer-logo" />
+    <div className="footer-top"><Logo className="footer-logo" /><p>SEE BEYOND.</p></div>
     <div className="footer-grid">
-      <div><b>VISIONZ</b><p>TWO VISIONS.<br/>ONE DESTINATION.</p></div>
       <div><b>SHOP</b><Link to="/shop">Current release</Link><Link to="/product/see-beyond-shorts-noir">See Beyond Shorts</Link><Link to="/lookbook">Lookbook</Link></div>
-      <div><b>SUPPORT</b><Link to="/shipping">Shipping</Link><Link to="/returns">Returns</Link><a href="mailto:ops@prime88.studio">Contact</a></div>
-      <div><b>LEGAL</b><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link><p>Mediator Solutions LLC<br/>Arizona, USA</p></div>
+      <div><b>SUPPORT</b><Link to="/shipping">Shipping</Link><Link to="/returns">Returns</Link></div>
+      <div><b>LEGAL</b><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link></div>
+      <div><b>OPERATOR</b><p>Mediator Solutions LLC<br/>Arizona, USA</p><p>Payments processed by Stripe.</p></div>
     </div>
-    <div className="footer-bottom"><span>© 2026 VISIONZ</span><span>SEE BEYOND.</span><span>PAYMENTS PROCESSED BY STRIPE</span></div>
+    <div className="footer-bottom"><span>© 2026 VISIONZ</span><span>TWO VISIONS. ONE DESTINATION.</span></div>
   </footer>
 }
 
 function Home() {
   return <main>
     <section className="hero">
-      <Logo className="hero-mark" />
-      <div className="hero-copy"><small>VISIONZ / COLLECTION 001</small><h1>SEE<br/>BEYOND.</h1><p>TWO VISIONS. ONE DESTINATION.</p><Link to="/shop" className="rail"><span>SHOP THE RELEASE</span><span>↘</span></Link></div>
+      <div className="hero-center"><Logo className="hero-logo" /><p>SEE BEYOND.</p></div>
+      <div className="hero-bottom"><span>VISIONZ / 001</span><Link to="/shop">SHOP CURRENT RELEASE ↗</Link></div>
     </section>
-    <section className="release paper">
-      <div className="section-rail"><span>01 / CURRENT RELEASE</span><span>LIMITED / NOIR</span></div>
-      <div className="release-grid">
-        <Link to="/product/see-beyond-shorts-noir" className="product-photo"><img src={`${A}see-beyond-shorts-noir.webp`} alt="VISIONZ See Beyond Shorts, front and back" /></Link>
-        <div className="release-copy"><small>SEE BEYOND / NOIR</small><h2>SEE BEYOND<br/>SHORTS.</h2><div className="price"><span>$225</span><span>S / M / L / XL</span></div><p>Double-layered 100% poly mesh with embroidered VISIONZ orbital mark and twin-star detail. Made in Glendale, Arizona. Limited edition of 94.</p><Link to="/product/see-beyond-shorts-noir" className="rail dark"><span>VIEW PRODUCT</span><span>↗</span></Link></div>
-      </div>
+
+    <section className="campaign-image"><img src={`${A}visionz-lookbook-dark.webp`} alt="VISIONZ black lookbook styling" /><div className="image-caption"><span>LOOK 01</span><span>VISIONZ / NOIR</span></div></section>
+
+    <section className="product-feature paper">
+      <div className="product-image"><img src={`${A}see-beyond-shorts-noir.webp`} alt="VISIONZ See Beyond Shorts, front and back" /></div>
+      <div className="product-copy"><small>DROP 01 / LIMITED 94</small><h1>SEE BEYOND<br/>SHORTS.</h1><div className="product-meta"><span>$225.00</span><span>S / M / L / XL</span></div><p>Double-layered 100% poly mesh. Embroidered VISIONZ orbital mark and twin-star detail. Made in Glendale, Arizona.</p><Link to="/product/see-beyond-shorts-noir" className="text-rail dark"><span>VIEW PRODUCT</span><span>↗</span></Link></div>
     </section>
-    <section className="statement">
-      <div className="statement-photo"><img src={`${A}visionz-lookbook-dark.webp`} alt="VISIONZ dark lookbook styling" /></div>
-      <div className="statement-copy"><small>02 / POSITION</small><h2>TWO VISIONS.<br/>ONE DESTINATION.</h2><p>THE VISION YOU HAVE TODAY.<br/>THE VISION YOU SEE TOMORROW.<br/>FOCUS. WORK. ELEVATE.<br/>SEE BEYOND.</p><Link to="/lookbook" className="rail"><span>OPEN LOOKBOOK</span><span>↘</span></Link></div>
-    </section>
-    <section className="mark-strip paper"><div><small>03 / MARK</small><Logo dark /></div><img src={`${A}visionz-hoodie-back.webp`} alt="VISIONZ hoodie back graphic" /></section>
+
+    <section className="manifesto-band"><div className="manifesto-copy"><small>VISIONZ / MANIFESTO</small><h2>TWO VISIONS.<br/>ONE DESTINATION.</h2><p>THE VISION YOU HAVE TODAY.<br/>THE VISION YOU SEE TOMORROW.<br/>FOCUS. WORK. ELEVATE.<br/>SEE BEYOND.</p></div><div className="hoodie-frame"><img src={`${A}visionz-hoodie-back.webp`} alt="VISIONZ hoodie back graphic" /></div></section>
+
+    <section className="closing-mark paper"><Logo dark /><div><span>VISIONZ</span><span>SEE BEYOND.</span></div></section>
   </main>
 }
 
 function Shop() {
-  return <main className="page paper"><header className="page-head"><small>SHOP / CURRENT</small><h1>RELEASE 001.</h1><p>One confirmed release is currently wired for purchase.</p></header><div className="product-row"><Link to="/product/see-beyond-shorts-noir"><img src={`${A}see-beyond-shorts-noir.webp`} alt="See Beyond Shorts — Noir" /></Link><div><small>NOIR / LIMITED 94</small><h2>SEE BEYOND SHORTS</h2><p className="large-price">$225.00</p><Link to="/product/see-beyond-shorts-noir" className="rail dark"><span>VIEW</span><span>↗</span></Link></div></div><aside className="archive-note"><small>ARCHIVE / LOOKBOOK</small><p>Additional VISIONZ pieces appear in the lookbook. They are not presented as purchasable until inventory and pricing are confirmed.</p></aside></main>
+  return <main className="page paper"><header className="page-head"><small>VISIONZ / SHOP</small><h1>CURRENT<br/>RELEASE.</h1></header><div className="shop-product"><Link to="/product/see-beyond-shorts-noir" className="shop-image"><img src={`${A}see-beyond-shorts-noir.webp`} alt="See Beyond Shorts — Noir" /></Link><div className="shop-info"><small>DROP 01 / NOIR / LIMITED 94</small><h2>SEE BEYOND SHORTS</h2><div className="shop-price">$225.00</div><p>S / M / L / XL</p><Link to="/product/see-beyond-shorts-noir" className="text-rail dark"><span>VIEW PRODUCT</span><span>↗</span></Link></div></div><aside className="archive-note"><span>ARCHIVE / LOOKBOOK</span><p>Additional VISIONZ pieces appear in the lookbook. They remain editorial until inventory and pricing are confirmed.</p></aside></main>
 }
 
 function Product() {
   const [size, setSize] = useState('M')
-  return <main className="product-page"><div className="gallery"><img src={`${A}see-beyond-shorts-noir.webp`} alt="See Beyond Shorts — Noir, front and back" /><div className="gallery-mark"><Logo /></div></div><section className="product-panel"><small>VISIONZ / 001 / NOIR</small><h1>SEE BEYOND<br/>SHORTS.</h1><div className="product-price">$225.00</div><p>Double-layered 100% poly mesh. Embroidered VISIONZ orbital mark and twin-star detail. Made in Glendale, Arizona. Limited edition of 94 units.</p><fieldset><legend>SIZE</legend><div className="sizes">{['S','M','L','XL'].map(s => <button type="button" key={s} className={s === size ? 'selected' : ''} aria-pressed={s === size} onClick={() => setSize(s)}>{s}</button>)}</div></fieldset><a className="checkout" href={CHECKOUT} target="_blank" rel="noopener noreferrer">BUY WITH STRIPE ↗</a><p className="note">Selected here: {size}. Choose the matching size again in Stripe Checkout. U.S. shipping address is collected securely.</p><div className="facts"><div><span>COLOR</span><span>NOIR</span></div><div><span>EDITION</span><span>94</span></div><div><span>ORIGIN</span><span>GLENDALE, ARIZONA</span></div><div><span>MATERIAL</span><span>100% POLY MESH</span></div></div></section></main>
+  return <main className="product-page"><div className="gallery"><img src={`${A}see-beyond-shorts-noir.webp`} alt="See Beyond Shorts — Noir, front and back" /></div><section className="product-panel"><small>VISIONZ / DROP 01 / NOIR</small><h1>SEE BEYOND<br/>SHORTS.</h1><div className="product-price">$225.00</div><p>Double-layered 100% poly mesh. Embroidered VISIONZ orbital mark and twin-star detail. Made in Glendale, Arizona. Limited edition of 94 units.</p><fieldset><legend>SIZE</legend><div className="sizes">{['S','M','L','XL'].map(s => <button type="button" key={s} className={s === size ? 'selected' : ''} aria-pressed={s === size} onClick={() => setSize(s)}>{s}</button>)}</div></fieldset><a className="checkout" href={CHECKOUT} target="_blank" rel="noopener noreferrer">CHECK OUT WITH STRIPE ↗</a><p className="note">Selected here: {size}. Choose the matching size again in Stripe Checkout.</p><div className="facts"><div><span>COLOR</span><span>NOIR</span></div><div><span>EDITION</span><span>94</span></div><div><span>ORIGIN</span><span>GLENDALE, ARIZONA</span></div><div><span>MATERIAL</span><span>100% POLY MESH</span></div></div></section></main>
 }
 
 function Lookbook() {
   const items = [
-    ['visionz-lookbook-dark.webp','01 / DARK STUDY','Black VISIONZ styling'],
+    ['visionz-lookbook-dark.webp','01 / NOIR','Black VISIONZ styling'],
     ['visionz-hoodie-back.webp','02 / BACK MARK','VISIONZ hoodie back graphic'],
-    ['see-beyond-shorts-noir.webp','03 / RELEASE 001','See Beyond Shorts front and back']
+    ['see-beyond-shorts-noir.webp','03 / DROP 01','See Beyond Shorts front and back']
   ]
-  return <main className="page lookbook"><header className="lookbook-head"><div><small>VISIONZ / LOOKBOOK</small><h1>SEE BEYOND.</h1></div><Logo /></header><div className="lookbook-rail">{items.map(([src,label,alt]) => <figure key={src}><div><img src={`${A}${src}`} alt={alt}/></div><figcaption><span>{label}</span><span>VISIONZ</span></figcaption></figure>)}</div></main>
+  return <main className="page lookbook"><header className="lookbook-head"><small>VISIONZ / LOOKBOOK</small><Logo /></header><div className="lookbook-list">{items.map(([src,label,alt]) => <figure key={src}><div><img src={`${A}${src}`} alt={alt}/></div><figcaption><span>{label}</span><span>SEE BEYOND.</span></figcaption></figure>)}</div></main>
 }
 
 function About() {
-  return <main className="page manifesto"><Logo className="manifesto-mark"/><small>VISIONZ / MANIFESTO</small><h1>TWO VISIONS.<br/>ONE DESTINATION.</h1><p>THE VISION YOU HAVE TODAY.<br/>THE VISION YOU SEE TOMORROW.<br/>FOCUS. WORK. ELEVATE.<br/>SEE BEYOND.</p></main>
+  return <main className="page about"><Logo className="about-logo"/><div><small>VISIONZ / MANIFESTO</small><h1>TWO VISIONS.<br/>ONE DESTINATION.</h1><p>THE VISION YOU HAVE TODAY.<br/>THE VISION YOU SEE TOMORROW.<br/>FOCUS. WORK. ELEVATE.<br/>SEE BEYOND.</p></div></main>
 }
 
 const POLICY = {
   '/shipping': ['SHIPPING.','VISIONZ currently ships physical merchandise from Arizona. Available shipping options, destination eligibility, and the final order total are shown during checkout before payment.'],
-  '/returns': ['RETURNS.','Contact support before sending merchandise back. Release-specific eligibility and item-condition requirements must be confirmed before a return is accepted. No return window is stated here until an operator-approved policy is locked.'],
-  '/privacy': ['PRIVACY.','Payment details are processed by Stripe. Order and contact information may be used for fulfillment, customer support, fraud prevention, accounting, security, and legal obligations. VISIONZ does not require payment-card data to pass through this website.'],
+  '/returns': ['RETURNS.','Contact support before sending merchandise back. Release-specific eligibility and item-condition requirements must be confirmed before a return is accepted. No return window is stated until an operator-approved policy is locked.'],
+  '/privacy': ['PRIVACY.','Payment details are processed by Stripe. Order and contact information may be used for fulfillment, customer support, fraud prevention, accounting, security, and legal obligations. Payment-card data does not pass through this website.'],
   '/terms': ['TERMS.','VISIONZ commerce is operated by Mediator Solutions LLC in Arizona, USA. Orders are accepted after successful payment and inventory confirmation. Product imagery, marks, and editorial material remain protected brand assets.']
 }
 
