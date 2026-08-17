@@ -3,5 +3,9 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  build: { target: 'es2020', sourcemap: false }
+  build: {
+    target: 'es2020',
+    sourcemap: false,
+    assetsInlineLimit: 10 * 1024 * 1024
+  }
 })
