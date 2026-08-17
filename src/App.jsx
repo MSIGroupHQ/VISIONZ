@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import logoWhite from './assets/logo-white.png'
-import logoBlack from './assets/logo-black.png'
 import shorts from './assets/shorts.png'
-import lookbook from './assets/lookbook.png'
 
 const CHECKOUT = 'https://buy.stripe.com/9B6dRbdwXbVGglndXr9AA0Y'
 
@@ -10,7 +8,6 @@ const TITLES = {
   '/': 'VISIONZ — SEE BEYOND',
   '/shop': 'Shop — VISIONZ',
   '/product/see-beyond-shorts-noir': 'See Beyond Shorts — VISIONZ',
-  '/lookbook': 'Lookbook — VISIONZ',
   '/about': 'About — VISIONZ',
   '/shipping': 'Shipping — VISIONZ',
   '/returns': 'Returns — VISIONZ',
@@ -34,15 +31,15 @@ function Link({ to, children, className = '' }) {
   return <a href={to} className={className} onClick={go}>{children}</a>
 }
 
-function Logo({ dark = false, className = '' }) {
-  return <img className={`brand-logo ${className}`} src={dark ? logoBlack : logoWhite} alt="" aria-hidden="true" draggable="false" />
+function Logo({ className = '' }) {
+  return <img className={`brand-logo ${className}`} src={logoWhite} alt="" aria-hidden="true" draggable="false" />
 }
 
 function Header() {
   return <header className="site-header">
     <nav className="nav-shell" aria-label="Primary">
       <Link to="/" className="nav-logo" aria-label="Home"><Logo /></Link>
-      <div className="nav-links desktop"><Link to="/lookbook">LOOKBOOK</Link><Link to="/about">ABOUT</Link></div>
+      <Link to="/about" className="nav-about desktop">ABOUT</Link>
       <Link to="/shop" className="nav-shop">SHOP ↗</Link>
     </nav>
   </header>
@@ -52,7 +49,7 @@ function Footer() {
   return <footer className="site-footer">
     <div className="footer-mark"><Logo /></div>
     <div className="footer-grid">
-      <div><b>SHOP</b><Link to="/shop">Shop</Link><Link to="/product/see-beyond-shorts-noir">See Beyond Shorts</Link><Link to="/lookbook">Lookbook</Link></div>
+      <div><b>SHOP</b><Link to="/shop">Shop</Link><Link to="/product/see-beyond-shorts-noir">See Beyond Shorts</Link></div>
       <div><b>SUPPORT</b><Link to="/shipping">Shipping</Link><Link to="/returns">Returns</Link></div>
       <div><b>LEGAL</b><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link></div>
     </div>
@@ -66,11 +63,6 @@ function Home() {
       <div className="hero-inner"><Logo className="hero-logo" /><Link to="/shop" className="hero-shop">SHOP ↗</Link></div>
     </section>
 
-    <section className="lookbook-hero">
-      <img src={lookbook} alt="Black hoodie and pants lookbook" />
-      <Link to="/lookbook" className="lookbook-link">LOOKBOOK ↗</Link>
-    </section>
-
     <section className="product-feature paper">
       <Link to="/product/see-beyond-shorts-noir" className="product-image"><img src={shorts} alt="Black mesh shorts, front and back" /></Link>
       <div className="product-copy">
@@ -82,8 +74,8 @@ function Home() {
     </section>
 
     <section className="statement">
-      <h2>TWO VISIONS.<br/>ONE DESTINATION.</h2>
-      <p>THE VISION YOU HAVE TODAY.<br/>THE VISION YOU SEE TOMORROW.<br/>FOCUS. WORK. ELEVATE.<br/>SEE BEYOND.</p>
+      <p>TWO VISIONS. ONE DESTINATION.</p>
+      <strong>SEE BEYOND.</strong>
     </section>
   </main>
 }
@@ -118,17 +110,10 @@ function Product() {
   </main>
 }
 
-function Lookbook() {
-  return <main className="page lookbook-page">
-    <div className="lookbook-frame"><img src={lookbook} alt="Black hoodie and pants lookbook" /></div>
-    <div className="lookbook-copy"><Logo /><p>SEE BEYOND.</p></div>
-  </main>
-}
-
 function About() {
   return <main className="page about-page">
     <Logo className="about-logo" />
-    <div><h1>TWO VISIONS.<br/>ONE DESTINATION.</h1><p>THE VISION YOU HAVE TODAY.<br/>THE VISION YOU SEE TOMORROW.<br/>FOCUS. WORK. ELEVATE.<br/>SEE BEYOND.</p></div>
+    <div><p>TWO VISIONS. ONE DESTINATION.</p><strong>SEE BEYOND.</strong></div>
   </main>
 }
 
@@ -156,7 +141,6 @@ function App() {
   let page = <Home />
   if (path === '/shop') page = <Shop />
   else if (path === '/product/see-beyond-shorts-noir') page = <Product />
-  else if (path === '/lookbook') page = <Lookbook />
   else if (path === '/about') page = <About />
   else if (POLICY[path]) page = <Policy path={path} />
 
